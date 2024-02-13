@@ -8,6 +8,8 @@ for i in ["series", "movies"]:
     except FileExistsError:
         pass
 for file in files:
+    if file.endswith(".exe"):
+        continue
     if match_group := re.findall("([a-zA-Z_\.\d]+)([sS]\d{1,3})(E\d{1,3})[\w_\-\.]+(\.\w{3,})", file):  # series
         name = match_group[0][0].replace(".", " ").replace("_", " ").strip().replace(" ", "_")
         season = match_group[0][1].replace("s", "").replace("S", "")
